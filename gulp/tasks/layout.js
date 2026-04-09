@@ -1,7 +1,8 @@
 const gulp = require('gulp');
 const replace = require('gulp-token-replace');
 const htmlmin = require('gulp-htmlmin');
-const size = require('gulp-size');
+const sizeModule = require('gulp-size');
+const size = sizeModule.default || sizeModule;
 const browserSync = require('browser-sync');
 
 const config = require('../config');

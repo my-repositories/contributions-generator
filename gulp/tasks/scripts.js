@@ -7,13 +7,14 @@ const babelify = require('babelify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
-const size = require('gulp-size');
+const sizeModule = require('gulp-size');
+const size = sizeModule.default || sizeModule;
 const browserSync = require('browser-sync');
 
 const config = require('../config');
 const errorHandler = require('../utils/error-handler');
 
-const bundler = watchify(browserify({
+let bundler = browserify({
     entries: [config.path.src.scripts],
     transform: [
         babelify.configure({
@@ -21,7 +22,7 @@ const bundler = watchify(browserify({
             sourceMaps: !config.isProduction,
         }),
     ],
-}));
+});
 
 function scriptsTask() {
     return bundler
@@ -37,6 +38,9 @@ function scriptsTask() {
         .pipe(browserSync.reload({ stream: true }));
 }
 
-bundler.on('update', scriptsTask);
+if (!config.isProduction) {
+    bundler = watchify(bundler);
+    bundler.on('update', scriptsTask);
+}
 
 module.exports = scriptsTask;

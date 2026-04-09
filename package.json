@@ -13,12 +13,12 @@
         "eslint": "eslint",
         "htmllint": "htmllint",
         "stylelint": "stylelint --fix --config ./.stylelintrc",
-        "lint:js": "yarn run eslint --fix --config ./.eslintrc.json",
+        "lint:js": "npm run eslint -- --fix --config ./.eslintrc.json",
         "lint:html": "htmllint --fix --config ./.htmllintrc ./src/**/*.html",
         "lint:less": "stylelint",
-        "clean": "yarn run gulp -f gulp/main.js cleanTask",
-        "build": "yarn run gulp -f gulp/main.js buildTask --production",
-        "start": "yarn run gulp -f gulp/main.js"
+        "clean": "npm run gulp -- -f gulp/main.js cleanTask",
+        "build": "npm run gulp -- -f gulp/main.js buildTask --production",
+        "start": "npm run gulp -- -f gulp/main.js"
     },
     "bin": {
         "contributions-generator": "bin/cli.js"
@@ -29,15 +29,15 @@
     },
     "lint-staged": {
         "*.js": [
-            "yarn run lint:js",
+            "npm run lint:js",
             "git add"
         ],
         "*.html": [
-            "yarn run lint:html",
+            "npm run lint:html",
             "git add"
         ],
         "*.less": [
-            "yarn run lint:less",
+            "npm run lint:less",
             "git add"
         ]
     },
@@ -59,35 +59,35 @@
         ]
     },
     "devDependencies": {
-        "browser-sync": "latest",
-        "eslint": "latest",
-        "htmllint": "latest",
-        "htmllint-cli": "latest",
-        "husky": "latest",
-        "lint-staged": "latest",
-        "stylelint": "latest"
+        "browser-sync": "3.0.4",
+        "eslint": "10.2.0",
+        "htmllint": "0.8.0",
+        "htmllint-cli": "0.0.7",
+        "husky": "9.1.7",
+        "lint-staged": "16.4.0",
+        "stylelint": "17.6.0"
     },
     "dependencies": {
-        "@babel/core": "latest",
-        "@babel/preset-env": "latest",
-        "babelify": "latest",
-        "browserify": "latest",
-        "del": "latest",
-        "gulp": "latest",
-        "gulp-autoprefixer": "latest",
-        "gulp-clean-css": "latest",
-        "gulp-concat": "latest",
-        "gulp-group-css-media-queries": "latest",
-        "gulp-htmlmin": "latest",
-        "gulp-less": "latest",
-        "gulp-noop": "latest",
-        "gulp-plumber": "latest",
-        "gulp-sourcemaps": "latest",
-        "gulp-size": "latest",
-        "gulp-token-replace": "latest",
-        "gulp-uglify": "latest",
-        "vinyl-buffer": "latest",
-        "vinyl-source-stream": "latest",
-        "watchify": "latest"
+        "@babel/core": "7.29.0",
+        "@babel/preset-env": "7.29.2",
+        "babelify": "10.0.0",
+        "browserify": "17.0.1",
+        "del": "8.0.1",
+        "gulp": "5.0.1",
+        "gulp-autoprefixer": "10.0.0",
+        "gulp-clean-css": "4.3.0",
+        "gulp-concat": "2.6.1",
+        "gulp-group-css-media-queries": "1.2.2",
+        "gulp-htmlmin": "5.0.1",
+        "gulp-less": "5.0.0",
+        "gulp-noop": "1.0.1",
+        "gulp-plumber": "1.2.1",
+        "gulp-sourcemaps": "3.0.0",
+        "gulp-size": "5.0.0",
+        "gulp-token-replace": "1.1.5",
+        "gulp-uglify": "3.0.2",
+        "vinyl-buffer": "1.0.1",
+        "vinyl-source-stream": "2.0.0",
+        "watchify": "4.0.0"
     }
 }

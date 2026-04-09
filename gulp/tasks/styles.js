@@ -2,11 +2,13 @@ const gulp = require('gulp');
 const noop = require('gulp-noop');
 const sourcemaps = require('gulp-sourcemaps');
 const less = require('gulp-less');
-const autoprefixer = require('gulp-autoprefixer');
+const autoprefixerModule = require('gulp-autoprefixer');
+const autoprefixer = autoprefixerModule.default || autoprefixerModule;
 const gcmq = require('gulp-group-css-media-queries');
 const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
-const size = require('gulp-size');
+const sizeModule = require('gulp-size');
+const size = sizeModule.default || sizeModule;
 const browserSync = require('browser-sync');
 
 const config = require('../config');
