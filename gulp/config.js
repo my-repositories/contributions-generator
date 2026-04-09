@@ -5,11 +5,13 @@ module.exports = resolvePath({
     path: {
         dest: {
             layout: 'dest/',
+            public: 'dest/',
             scripts: 'dest/js/',
             styles: 'dest/css/',
         },
         src: {
             layout: 'src/index.html',
+            public: 'public/**/*',
             scripts: 'src/scripts/main.js',
             styles: 'src/styles/**/*.less',
         },
