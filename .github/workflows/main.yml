@@ -12,11 +12,8 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - name: Install
-              run: yarn install
-
             - name: Build
-              run: timeout 60 yarn run build || echo 'timeout'
+              run: timeout 60 npm run build || echo 'timeout'
 
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v3
