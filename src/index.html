@@ -2,36 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{{project.name}} V{{project.version}}</title>
+    <title>{{project.name}} v{{project.version}}</title>
     <meta name="description" content="{{project.description}}">
     <meta name="keywords" content="{{project.keywords}}">
     <meta name="author" content="{{project.author}}">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/{{config.bundle.css}}" type="text/css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="alternate icon" class="js-site-favicon" type="image/png" href="favicon.png">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --accent: #238636;
+            --accent-hover: #2ea043;
+            --text: #c9d1d9;
+            --border: #30363d;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .contributions {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="button"], button {
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid var(--border);
+            padding: 6px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        input[type="button"]:hover {
+            background: #30363d;
+            border-color: #8b949e;
+        }
+
+        #contributions__generate {
+            background: var(--accent);
+            color: white;
+            border: none;
+        }
+
+        #contributions__generate:hover {
+            background: var(--accent-hover);
+        }
+
+        .settings {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0d1117;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            border: 1px solid var(--border);
+        }
+
+        .contributions__area {
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin: 20px 0;
+            display: block;
+            width: 100%;
+            min-height: 150px;
+        }
+
+        .footer-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            background: #0d1117;
+            border: 1px solid var(--border);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            outline: none;
+            width: 80px;
+        }
+
+        input[type="text"]:focus {
+            border-color: #58a6ff;
+            ring: 1px solid #58a6ff;
+        }
+
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        p { font-size: 13px; opacity: 0.8; margin-top: 20px; }
+    </style>
 </head>
 <body>
-    <ul>
-    </ul>
     <div class="contributions">
-        <input type="button" value="Clear!" id="contributions__clear"/>
-        <input type="button" value="Random!" id="contributions__random"/>
-
-        <form class="contributions__settings settings" name="settings">
-            <span>drawing mode:</span>
-            <label for="settings__mode-click">click</label>
-            <input type="radio" name="mode" id="settings__mode-click" value="click" checked="checked">
-            <label for="settings__mode-move">move</label>
-            <input type="radio" name="mode" id="settings__mode-move" value="move">
-        </form>
-        <br />
+        <div class="header-controls">
+            <input type="button" value="Clear" id="contributions__clear"/>
+            <input type="button" value="Random" id="contributions__random"/>
+            
+            <form class="settings" name="settings">
+                <span>Mode:</span>
+                <input type="radio" name="mode" id="settings__mode-click" value="click" checked>
+                <label for="settings__mode-click">Click</label>
+                <input type="radio" name="mode" id="settings__mode-move" value="move">
+                <label for="settings__mode-move">Move</label>
+            </form>
+        </div>
 
         <svg id="contributions__area" class="contributions__area"></svg>
 
-        <br />
-        <label for="contributions__year">year</label>
-        <input type="text" id="contributions__year">
+        <div class="footer-controls">
+            <label for="contributions__year">Year:</label>
+            <input type="text" id="contributions__year" placeholder="2024">
+            <input type="button" value="Generate Chart" id="contributions__generate"/>
+        </div>
 
-        <input type="button" value="Generate!" id="contributions__generate"/>
+        <p>💡 Tip: Use <a href="./paint.sh" target="_blank"><b>paint.sh</b></a> for automation.</p>
     </div>
     <script src="js/{{config.bundle.js}}"></script>
 </body>
