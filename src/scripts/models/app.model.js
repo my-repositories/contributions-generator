@@ -55,7 +55,7 @@ class AppModel {
                     rectDate.setDate(day + j + i * CONTRIBUTIONS_COL);
 
                     const d = rectDate.getDate();
-                    const m = rectDate.getMonth();
+                    const m = 1 + rectDate.getMonth();
 
                     contributions.push(`${d}/${m}/${year}/${color}`);
                 }
